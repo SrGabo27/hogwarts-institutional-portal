@@ -1,0 +1,67 @@
+<app-search-table
+  [tags]="tags"
+  (searchString)="search($event)"
+  (selectedTag)="selectTag($event)"
+></app-search-table>
+
+<div class="table-container">
+  <table
+    class="table is-fullwidth is-narrow"
+    data-aos="fadeIn"
+    data-aos-duration="1500"
+    *ngIf="!isLoading"
+  >
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                Name
+                <i #name class="material-icons" (click)="sortByColumn('name')"
+                  >arrow_drop_down</i
+                >
+              </div>
+            </div>
+          </div>
+        </th>
+        <th>
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                Patronus<i
+                  #patronus
+                  class="material-icons"
+                  (click)="sortByColumn('patronus')"
+                  >arrow_drop_down</i
+                >
+              </div>
+            </div>
+          </div>
+        </th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let element of elements | filterTable: searchInput:selectedTag"
+      >
+        <td>
+          <figure class="image table-img">
+            <img
+              class="is-rounded"
+              [src]="element.image"
+              style="width: 40px; height: 40px"
+            />
+          </figure>
+        </td>
+        <td>{{ element.name }}</td>
+        <td>{{ element.patronus }}</td>
+        <td>{{ element.dateOfBirth | age }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-spinner [show]="isLoading"></app-spinner>
+</div>

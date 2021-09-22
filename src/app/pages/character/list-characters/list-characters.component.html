@@ -1,0 +1,24 @@
+<div class="level" style="margin-top: 20px">
+  <div class="level-item">
+    <div class="control has-icons-left">
+      <div class="select is-large">
+        <select [formControl]="houseSelect">
+          <option value="">Select a study house...</option>
+          <option [value]="house.name" *ngFor="let house of houses">
+            {{ house.name }}
+          </option>
+        </select>
+      </div>
+      <span class="icon is-large is-left">
+        <i class="material-icons">auto_fix_high</i>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="section" *ngIf="houseSelect.value !== ''">
+  <app-hogwarts-table
+    [elements]="characters"
+    [isLoading]="loading"
+  ></app-hogwarts-table>
+</div>

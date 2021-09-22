@@ -1,0 +1,205 @@
+<form [formGroup]="studentForm" (change)="onFileChange($event)" (submit)="submitPatientForm()" data-aos="fadeIn" data-aos-duration="1200">
+  <div class="columns">
+    <div class="column">
+      <h2>Student information</h2>
+	  <span class="required">Required fields: *</span>
+      <hr />
+
+      <div class="field">
+        <label class="label is-normal" for="name"><span class="required">*</span> Name:</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="text"
+            placeholder="Name"
+            formControlName="name"
+          />
+
+          <span class="icon is-left"><i class="material-icons">person</i></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label is-normal" for="name"><span class="required">*</span> Patronus:</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="text"
+            placeholder="Patronus"
+            formControlName="patronus"
+          />
+
+          <span class="icon is-left"><i class="material-icons">pets</i></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label is-normal" for="dateOfBirth"><span class="required">*</span> Date of birth:</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="text"
+            placeholder="Select date"
+            formControlName="dateOfBirth"
+            mwlFlatpickr
+          />
+
+          <span class="icon is-left"><i class="material-icons">event</i></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label is-normal" for="ancestry"><span class="required">*</span> Ancestry:</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="text"
+            placeholder="Ancestry name"
+            formControlName="ancestry"
+          />
+
+          <span class="icon is-left"><i class="material-icons">group</i></span>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label is-normal" for="species"><span class="required">*</span> Gender:</label>
+            <div class="control has-icons-left">
+              <div class="select is-link is-fullwidth">
+                <select formControlName="gender">
+                  <option value="null">Select...</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <span class="icon is-left"
+                ><i class="material-icons">person</i></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label is-normal" for="species"><span class="required">*</span> Species:</label>
+            <div class="control has-icons-left">
+              <input
+                class="input"
+                type="text"
+                placeholder="Species"
+                formControlName="species"
+              />
+
+              <span class="icon is-left"
+                ><i class="material-icons">person</i></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label is-normal" for="species"><span class="required">*</span> House:</label>
+        <div class="control has-icons-left">
+          <div class="select is-link is-fullwidth">
+            <select formControlName="house">
+              <option value="">Select...</option>
+              <option *ngFor="let house of houses" value="house.name">
+                {{ house.name }}
+              </option>
+            </select>
+          </div>
+
+          <span class="icon is-left"><i class="material-icons">person</i></span>
+        </div>
+      </div>
+
+      <br />
+
+      <h2>Wand</h2>
+	  
+	  <hr>
+
+      <div formGroupName="wand">
+        <div class="field">
+          <label class="label is-normal" for="wood"><span class="required">*</span> Wood:</label>
+          <div class="control has-icons-left">
+            <input class="input" type="text" placeholder="Wood" formControlName="wood"/>
+
+            <span class="icon is-left"
+              ><i class="material-icons">auto_fix_high</i></span
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label is-normal" for="core"><span class="required">*</span> Core:</label>
+          <div class="control has-icons-left">
+            <input class="input" type="text" placeholder="Core" formControlName="core"/>
+
+            <span class="icon is-left"
+              ><i class="material-icons">auto_fix_high</i></span
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label is-normal" for="length"><span class="required">*</span> Length (cm):</label>
+          <div class="control has-icons-left">
+            <input class="input" type="number" placeholder="Length" formControlName="length"/>
+
+            <span class="icon is-left"
+              ><i class="material-icons">straighten</i></span
+            >
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="column">
+      <div class="field">
+		<label class="label is-normal" for="name">Student image:</label>
+        <div class="control">
+          <div class="level">
+            <div class="level-item">
+              <div class="file is-info has-name">
+                <label class="file-label">
+                  <input class="file-input" type="file" name="resume" />
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="material-icons">image</i>
+                    </span>
+                    <span class="file-label"> Select… </span>
+                  </span>
+                  <span class="file-name"> Student image</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="level">
+        <div class="level-item">
+          <figure class="image" style="width: 600px">
+            <img [src]="studentImg" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="field is-grouped is-grouped-right">
+        <p class="control">
+          <button class="button is-primary is-medium" [disabled]="studentForm.invalid">
+            Submit
+          </button>
+        </p>
+      </div>
+</form>

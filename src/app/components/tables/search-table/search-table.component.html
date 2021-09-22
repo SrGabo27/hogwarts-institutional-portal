@@ -1,0 +1,25 @@
+<h2>Filter by:</h2>
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip
+    *ngFor="let tag of tags"
+    [selected]="tag.selected"
+    (click)="selectTag(tag)"
+    >{{ tag.name }}</mat-chip
+  >
+</mat-chip-list>
+
+<br />
+
+<div class="control has-icons-left">
+  <input
+    class="input is-fullwidth is-rounded"
+    type="text"
+    placeholder="Search..."
+    [(ngModel)]="searchInput"
+    (keyup)="search()"
+  />
+
+  <span class="icon is-left"><i class="material-icons">search</i></span>
+</div>
+
+<hr />

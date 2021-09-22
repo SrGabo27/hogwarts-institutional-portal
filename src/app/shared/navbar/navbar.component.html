@@ -1,0 +1,75 @@
+<header>
+  <nav
+    class="navbar is-dark is-fixed-top"
+    role="navigation"
+    aria-label="main navigation"
+    style="height: auto"
+  >
+    <div class="navbar-brand">
+      <a
+        class="navbar-item"
+        routerLink="/"
+        data-aos="fadeUp"
+        data-aos-duration="1200"
+      >
+        <img src="assets/img/logo.png" width="70" height="100" />
+
+        <p class="title logo-title">Hogwarts</p>
+      </a>
+
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarBasicExample"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start"></div>
+
+      <div class="navbar-end">
+        <div
+          class="navbar-item has-dropdown is-hoverable"
+          *ngFor="let item of menu"
+        >
+          <a class="navbar-link"> {{ item.title }} </a>
+
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              *ngFor="let children of item.children"
+              [routerLink]="[children.link]"
+              >{{ children.title }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section
+    class="hero is-link is-fullheight-with-navbar"
+    style="max-height: 100px !important"
+  >
+    <div class="hero-body">
+      <div class="container">
+        <div class="level level-item">
+          <p
+            class="title banner-title"
+            style="font-family: bluu"
+            data-aos="fadeIn"
+            data-aos-duration="1200"
+          >
+            {{ bannerTitle }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
